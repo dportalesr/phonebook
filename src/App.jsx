@@ -1,20 +1,23 @@
-import logo from "./logo.svg";
-import "./App.css";
+import { useState } from 'react'
+import Form from "./Form"
+import Directory from "./Directory"
 
 function App() {
+  const [persons, setPersons] = useState([])
+
+  function addPerson(person) {
+    setPersons([
+      ...persons,
+      person
+    ])
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h3>Welcome to React!</h3>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h3>PhoneBook</h3>
+        <Form onSubmit={addPerson} />
+        <Directory persons={persons} />
       </header>
     </div>
   );
